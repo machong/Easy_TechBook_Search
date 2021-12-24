@@ -1,0 +1,16 @@
+current directory: /home/user/Easy_TechBook_Search/vendor/bundle/ruby/2.7.0/gems/debug-1.4.0/ext/debug
+/home/user/.rbenv/versions/2.7.5/bin/ruby -I /home/user/.rbenv/versions/2.7.5/lib/ruby/2.7.0 -r ./siteconf20211224-34494-1uecc19.rb extconf.rb
+creating Makefile
+
+current directory: /home/user/Easy_TechBook_Search/vendor/bundle/ruby/2.7.0/gems/debug-1.4.0/ext/debug
+make "DESTDIR=" clean
+
+current directory: /home/user/Easy_TechBook_Search/vendor/bundle/ruby/2.7.0/gems/debug-1.4.0/ext/debug
+make "DESTDIR="
+compiling debug.c
+compiling iseq_collector.c
+linking shared-object debug/debug.so
+
+current directory: /home/user/Easy_TechBook_Search/vendor/bundle/ruby/2.7.0/gems/debug-1.4.0/ext/debug
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 debug.so ./.gem.20211224-34494-lpb427/debug
