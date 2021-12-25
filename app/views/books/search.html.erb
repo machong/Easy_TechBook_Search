@@ -1,0 +1,6 @@
+<h1>Easy TechBook Search</h1>
+
+<%= form_with model: @search_form, url: books_search_path, local: true, method: :get do |f| %>
+  <%= f.text_field :keyword, class: 'form-control', value: @search_form.keyword %>
+  <%= f.submit '検索する' %>
+<% end %>
