@@ -3,4 +3,15 @@
 <%= form_with model: @search_form, url: books_search_path, local: true, method: :get do |f| %>
   <%= f.text_field :keyword, class: 'form-control', value: @search_form.keyword %>
   <%= f.submit '検索する' %>
+  
+  <%= @records.each do |result| %>
+    <li>
+      <%= result[:title] %>
+      <%= result[:subtitle] %>
+      <%= result[:isbn13] %>
+      <%= result[:price] %>
+      <%= result[:image] %>
+      <%= result[:url] %>
+    </li>
+  <% end %>
 <% end %>
