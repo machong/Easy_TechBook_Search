@@ -4,7 +4,7 @@ class BooksController < ApplicationController
   
   def search
     @search_form = SearchBooksForm.new(search_books_params)
-    
+
     # @recordsは今はダミー。大神さんに、IT BookstoreのAPIを叩いてハッシュを格納する処理に変えてもらう。 
     @records =  [
       {
@@ -24,7 +24,6 @@ class BooksController < ApplicationController
         :url      => "https://itbook.store/books/9781484211830"
       }
     ]
-
   end
   
   private
