@@ -5,6 +5,7 @@
   <%= f.submit '検索する' %>
 <% end %>
 
+<% if @records != nil then %>
 <%= @records.each do |result| %>
   <%= puts result[:title] %>
   <%= puts result[:subtitle] %>
@@ -12,4 +13,5 @@
   <%= puts result[:price] %>
   <%= puts result[:image] %>
   <%= puts result[:url] %>
+  <% end %>
 <% end %>
