@@ -1,0 +1,2 @@
+module GetExchangeRatesHelper
+end
