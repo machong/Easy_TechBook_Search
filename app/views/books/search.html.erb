@@ -107,7 +107,7 @@
 			  <div class="col-md-10">
 				<h2><i class="fa fa-file-o"></i> 結果</h2>
 				<hr>
-				<p>"Ruby on Rails"に関連する本の一覧</p>
+                                <p>"Ruby on Rails"に関連する本の一覧</p>
 				
 				<div class="padding"></div>
 				
@@ -132,7 +132,7 @@
 				<div class="table-responsive">
 				  <table class="table table-hover">
                                     <tbody> 
-                                      <%= @records.each do |result| %>
+                                      <%= unless @records.nil? then  @records.each do |result| %>
                                         <td class="image"><img src="<%= result[:image] %>" alt=""> </td>
                                         <td class="Book col-sm-5">
                                           <div class="search-result-item col-sm-12">
@@ -142,156 +142,8 @@
                                         <td class="price text-right"> <%= result[:price] %> </td>
                                         <span> </span>
                                       <% end %>
+                                      <% end %>
                                     </tbody>
-
-
-                                                           
-                                    <tbody>
-                                        <tr>
-					  <td class="number text-center">1</td>
-					  <td class="image"><img src="https://via.placeholder.com/400x300/FF8C00" alt=""></td>
-					  <td class="Book col-sm-5">
-						<div class="search-result-item col-sm-12">
-							<h4 class="search-result-item-heading">Ruby Regexp</h4>
-							<p class="author">Author Name / Wiley社 / 2021年出版 </p>
-							<p class="description">スクリプトおよび自動化タスクでは、多くの場合、入力データからテキストの特定の部分を抽出したり、ある形式から別の形式に変更したりする必要があります。この本は、あらゆる種類のテキスト処理のニーズに...
-							</p>
-						</div>
-					  </td>
-					  <td class="rate text-right">
-						<span><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-o"></i></span>
-					  </td>
-					  <td class="price text-right">0円</td>
-					  <td class="download text-center"><a>ダウンロード</a>
-					  <br><span class="download-count">34回</span></td>
-					</tr>
-					<tr>
-					  <td class="number text-center">2</td>
-					  <td class="image"><img src="https://via.placeholder.com/400x300/5F9EA0" alt=""></td>
-					  <td class="Book col-sm-5">
-						<div class="search-result-item col-sm-12">
-							<h4 class="search-result-item-heading">Book2</h4>
-							<p class="author">Author Name / Wiley社 / 2021年出版 </p>
-							<p class="description">スクリプトおよび自動化タスクでは、多くの場合、入力データからテキストの特定の部分を抽出したり、ある形式から別の形式に変更したりする必要があります。この本は、あらゆる種類のテキスト処理のニーズに...
-							</p>
-						</div>
-					  </td>
-					  <td class="rate text-right">
-						<span><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-o"></i></span>
-					  </td>
-					  <td class="price text-right">1,500円</td>
-					  <td class="download text-center"><a>ダウンロード</a>
-					  <br><span class="download-count">2回</span></td>
-					</tr>
-					<tr>
-					  <td class="number text-center">3</td>
-					  <td class="image"><img src="https://via.placeholder.com/400x300" alt=""></td>
-					  <td class="Book col-sm-5">
-						<div class="search-result-item col-sm-12">
-							<h4 class="search-result-item-heading">Book3</h4>
-							<p class="author">Author Name / Wiley社 / 2021年出版 </p>
-							<p class="description">スクリプトおよび自動化タスクでは、多くの場合、入力データからテキストの特定の部分を抽出したり、ある形式から別の形式に変更したりする必要があります。この本は、あらゆる種類のテキスト処理のニーズに...
-							</p>
-						</div>
-					  </td>
-					  <td class="rate text-right">
-						<span><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-o"></i></span>
-					  </td>
-					  <td class="price text-right">860円</td>
-					  <td class="download text-center"><a>ダウンロード</a>
-					  <br><span class="download-count">4回</span></td>
-					</tr>
-					<tr>
-					  <td class="number text-center">4</td>
-					  <td class="image"><img src="https://via.placeholder.com/400x300/8A2BE2" alt=""></td>
-					  <td class="Book col-sm-5">
-						<div class="search-result-item col-sm-12">
-							<h4 class="search-result-item-heading">Book4</h4>
-							<p class="author">Author Name / Wiley社 / 2021年出版 </p>
-							<p class="description">スクリプトおよび自動化タスクでは、多くの場合、入力データからテキストの特定の部分を抽出したり、ある形式から別の形式に変更したりする必要があります。この本は、あらゆる種類のテキスト処理のニーズに...
-							</p>
-						</div>
-					  </td>
-					  <td class="rate text-right">
-						<span><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-o"></i></span>
-					  </td>
-					  <td class="price text-right">375円</td>
-					  <td class="download text-center"><a>ダウンロード</a>
-					  <br><span class="download-count">5回</span></td>
-					</tr>
-					<tr>
-					  <td class="number text-center">5</td>
-					  <td class="image"><img src="https://via.placeholder.com/400x300" alt=""></td>
-					  <td class="Book col-sm-5">
-						<div class="search-result-item col-sm-12">
-							<h4 class="search-result-item-heading">Book5</h4>
-							<p class="author">Author Name / Wiley社 / 2021年出版 </p>
-							<p class="description">スクリプトおよび自動化タスクでは、多くの場合、入力データからテキストの特定の部分を抽出したり、ある形式から別の形式に変更したりする必要があります。この本は、あらゆる種類のテキスト処理のニーズに...
-							</p>
-						</div>
-					  </td>
-					  <td class="rate text-right">
-						<span><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-o"></i></span>
-					  </td>
-					  <td class="price text-right">0円</td>
-					  <td class="download text-center"><a>ダウンロード</a>
-					  <br><span class="download-count">12回</span></td>
-					</tr>
-					<tr>
-					  <td class="number text-center">6</td>
-					  <td class="image"><img src="https://via.placeholder.com/400x300/6495ED" alt=""></td>
-					  <td class="Book col-sm-5">
-						<div class="search-result-item col-sm-12">
-							<h4 class="search-result-item-heading">Book6</h4>
-							<p class="author">Author Name / Wiley社 / 2021年出版 </p>
-							<p class="description">スクリプトおよび自動化タスクでは、多くの場合、入力データからテキストの特定の部分を抽出したり、ある形式から別の形式に変更したりする必要があります。この本は、あらゆる種類のテキスト処理のニーズに...
-							</p>
-						</div>
-					  </td>
-					  <td class="rate text-right">
-						<span><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-o"></i></span>
-					  </td>
-					  <td class="price text-right">965円</td>
-					  <td class="download text-center"><a>ダウンロード</a>
-					  <br><span class="download-count">8回</span></td>
-					</tr>
-					<tr>
-					  <td class="number text-center">7</td>
-					  <td class="image"><img src="https://via.placeholder.com/400x300/DC143C" alt=""></td>
-					  <td class="Book col-sm-5">
-						<div class="search-result-item col-sm-12">
-							<h4 class="search-result-item-heading">Book7</h4>
-							<p class="author">Author Name / Wiley社 / 2021年出版 </p>
-							<p class="description">スクリプトおよび自動化タスクでは、多くの場合、入力データからテキストの特定の部分を抽出したり、ある形式から別の形式に変更したりする必要があります。この本は、あらゆる種類のテキスト処理のニーズに...
-							</p>
-						</div>
-					  </td>
-					  <td class="rate text-right">
-						<span><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-o"></i></span>
-					  </td>
-					  <td class="price text-right">740円</td>
-					  <td class="download text-center"><a>ダウンロード</a>
-					  <br><span class="download-count">0回</span></td>
-					</tr>
-					<tr>
-					  <td class="number text-center">8</td>
-					  <td class="image"><img src="https://via.placeholder.com/400x300/9932CC" alt=""></td>
-					  <td class="Book col-sm-5">
-						<div class="search-result-item col-sm-12">
-							<h4 class="search-result-item-heading">Book8</h4>
-							<p class="author">Author Name / Wiley社 / 2021年出版 </p>
-							<p class="description">スクリプトおよび自動化タスクでは、多くの場合、入力データからテキストの特定の部分を抽出したり、ある形式から別の形式に変更したりする必要があります。この本は、あらゆる種類のテキスト処理のニーズに...
-							</p>
-						</div>
-					  </td>
-					  <td class="rate text-right">
-						<span><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-o"></i></span>
-					  </td>
-					  <td class="price text-right">0円</td>
-					  <td class="download text-center"><a>ダウンロード</a>
-					  <br><span class="download-count">1回</span></td>
-					</tr>
-				  </tbody></table>
 				</div>
 				<!-- END TABLE RESULT -->
 			  </div>
