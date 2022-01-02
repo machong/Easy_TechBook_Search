@@ -106,8 +106,8 @@
 			  <!-- BEGIN RESULT -->
 			  <div class="col-md-10">
 				<h2><i class="fa fa-file-o"></i> 結果</h2>
-				<hr>
-                                <p>"Ruby on Rails"に関連する本の一覧</p>
+                                <hr>
+                                <p>"<%= @search_form.keyword %>"に関連する本の一覧</p>
 				
 				<div class="padding"></div>
 				
@@ -127,25 +127,34 @@
 					</div>
 				  </div>
 				  <!-- END ORDER RESULT -->
-				
+
 				<!-- BEGIN TABLE RESULT -->
 				<div class="table-responsive">
 				  <table class="table table-hover">
                                     <tbody> 
-                                      <%= unless @records.nil? then  @records.each do |result| %>
-                                        <td class="image"><img src="<%= result[:image] %>" alt=""> </td>
+                                      <% unless @records.nil? then  @records.each do |result| %>
+                                        <td class="image">
+                                          <a href="<%= result["url"] %>">
+                                            <img src="<%= result["image"] %>" alt="">
+                                          </a>
+                                        </td>
                                         <td class="Book col-sm-5">
                                           <div class="search-result-item col-sm-12">
-                                            <h4 class="serach-result-itemheading"> <%= result[:title] %> </h4>
+                                            <h4 class="serach-result-itemheading"> 
+                                              <a href="<%= result["url"]%>" >
+                                                <%= result["title"] %>
+                                              </a>
+                                            </h4>
                                           </div>
                                         </td>
-                                        <td class="price text-right"> <%= result[:price] %> </td>
+                                        <td class="price text-right"> <%= result["price"] %> </td>
                                         <span> </span>
                                       <% end %>
                                       <% end %>
                                     </tbody>
-				</div>
-				<!-- END TABLE RESULT -->
+                                </div>
+                                <!-- END TABLE RESULT -->
+
 			  </div>
 			  <!-- END RESULT -->
 			</div>
@@ -256,6 +265,8 @@
 </body>
 </html>
 
+<!--
+
 <h1>Easy TechBook Search</h1>
 
 <%= form_with model: @search_form, url: books_search_path, local: true, method: :get do |f| %>
@@ -273,3 +284,10 @@
   <%= puts result[:url] %>
   <% end %>
 <% end %>
+
+<%= puts @records %>
+
+-->
+
+
+
