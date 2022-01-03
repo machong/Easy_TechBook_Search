@@ -5,7 +5,13 @@ class BooksController < ApplicationController
   
   def search
     @search_form = SearchBooksForm.new(search_books_params)
-    @records = @search_form.query()["books"]
+    debugger
+    #@records = @search_form.query()["books"]
+    unless params[:sort_by].nil? then
+      @records = @search_form.query().sort(sort_by: params[:sort_by], ascending: params[:ascending])["books"]
+    else      
+      @records = @search_form.query().sort()["books"]
+    end
   end
   
   private

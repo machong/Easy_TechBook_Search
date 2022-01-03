@@ -20,6 +20,20 @@ class SearchBooksForm
     elsif
       @hash = {books:[]}
     end
+    return self
+  end
+
+  def sort(sort_by='price', ascending = true)
+    debugger
+    unless @hash["books"].nil? then
+      if sort_by == "price" then
+        if ascending == true then
+          @hash = @hash["books"].sort_by{|v| v["price"]}
+        else
+          @hash = @hash["books"].sort_by{|v| -v["price"]}
+        end
+      end
+    end
     return @hash
   end
 end

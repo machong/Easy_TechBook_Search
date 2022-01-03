@@ -119,8 +119,8 @@
 						表示順<span class="caret"></span>
 						</button>
 						<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-							<li><a class="dropdown-item" href="#">安い順</a></li>
-							<li><a class="dropdown-item" href="#">高い順</a></li>
+							<li><a class="dropdown-item" href="?sort_by=price&ascending=false">安い順</a></li>
+							<li><a class="dropdown-item" href="?sort_by=price&ascending=true">高い順</a></li>
 							<li><a class="dropdown-item" href="#">ダウンロード回数多い順</a></li>
 							<li><a class="dropdown-item" href="#">ダウンロード回数少ない順</a></li>
 						</ul>
@@ -131,12 +131,15 @@
 				<!-- BEGIN TABLE RESULT -->
 				<div class="table-responsive">
 				  <table class="table table-hover">
-                                    <tbody> 
-                                      <%= unless @records.nil? then  @records.each do |result| %>
+                    <tbody>
+                      <%= params %>
+                                      <% unless @records.nil? then  @records.each do |result| %>
+                                        <%= result["title"] %>
                                         <td class="image"><img src="<%= result[:image] %>" alt=""> </td>
                                         <td class="Book col-sm-5">
                                           <div class="search-result-item col-sm-12">
-                                            <h4 class="serach-result-itemheading"> <%= result[:title] %> </h4>
+                                            test
+                                            <h4 class="serach-result-itemheading"> <%= result["title"] %> </h4>
                                           </div>
                                         </td>
                                         <td class="price text-right"> <%= result[:price] %> </td>
