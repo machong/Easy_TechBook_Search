@@ -55,16 +55,14 @@
     </button>
   <div class="collapse navbar-collapse" id="main_nav">
 	<!-- BEGIN SEARCH INPUT -->
+	<%= form_with model: @search_form, url: books_search_path, class: 'w-100',local: true, method: :get do |f| %>
 	<div class="input-group">
-          <div class="form-control">
-            <%= form_with model: @search_form, url: books_search_path, local: true, method: :get do |f| %>
-            <%= f.text_field :keyword, class: 'form-control', value: @search_form.keyword %>
-          </div>   
-          <div class="btn btn-dark">
-            <%= f.submit '検索する'%>
+        <%= f.text_field :keyword, class: 'form-control', value: @search_form.keyword, placeholder: '良く検索されているキーワード：Python, Java, SQL' %>
+        <span class="input-group-btn">
+            <button class="btn btn-dark" type="submit"><i class="fa fa-search"></i></button>
             <% end %>
-          </div>
-        </div>
+        </span>
+    </div>
 	  <!-- END SEARCH INPUT -->
 
   </div>
