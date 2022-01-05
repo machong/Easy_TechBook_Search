@@ -64,6 +64,7 @@ group :development do
   # gem "spring"
 
   gem 'rubocop', require: false
+  gem "pre-commit", require: false
 end
 
 group :test do
