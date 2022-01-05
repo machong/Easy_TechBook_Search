@@ -18,8 +18,7 @@ MethodLength:
   Max: 15
 
 Metrics/AbcSize:
-  # The ABC size is a calculated magnitude, so this number can be a Fixnum or
-  # a Float.
+  # The ABC size is a calculated magnitude, so this number can be a Fixnum or a Float.
   Max: 20
 
 AllCops:
