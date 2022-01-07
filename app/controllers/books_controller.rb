@@ -5,7 +5,11 @@ class BooksController < ApplicationController
     @search_form = SearchBooksForm.new(search_books_params)
 
     # IT BookstoreからのJSON戻り値を@recordsに格納する
-    @records = @search_form.query['books']
+    unless params[:sort_by].nil? then
+      @records = @search_form.query().sort(sort_by: params[:sort_by], ascending: params[:ascending])["books"]
+    else      
+      @records = @search_form.query().sort()["books"]
+    end
 
     # IT Bookstoreのサーバが落ちている時は↑の@records行をコメントアウトして↓のダミーデータを使う
 
