@@ -7,6 +7,7 @@
 <meta name="description" content="Bootstrap 5 fixed navbar on scroll page examples, Bootstrap 5" />  
 
 <title>Demo - Bootstrap 5 fixed top header on page scroll. html code example</title>
+<script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"crossorigin="anonymous"></script>
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
@@ -29,7 +30,19 @@
 	}); 
 	// DOMContentLoaded  end
 </script>
+<script type="text/javascript">
 
+  // ソート順クリックイベント start
+  $(document).on('change','#sortDropDown',function(){
+        //Getting Value
+        var selValue = $("#sortDropDown").val();
+    
+    // ここにソートの機能を呼び出してください！
+    // alert('ソート順変わった('+selValue+')');
+    });
+  // ソート順クリックイベント end
+
+</script>
 <style type="text/css">
 	.fixed-top {
 	    top: -40px;
@@ -113,15 +126,11 @@
 				  <!-- BEGIN ORDER RESULT -->
 				  <div class="col-sm-12">
 					<div class="btn-group pull-right">
-						<button type="button" id="dropdownMenuButton1"  class="btn btn-default border dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-						表示順<span class="caret"></span>
-						</button>
-						<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-							<li><a class="dropdown-item" href="#">安い順</a></li>
-							<li><a class="dropdown-item" href="#">高い順</a></li>
-							<li><a class="dropdown-item" href="#">ダウンロード回数多い順</a></li>
-							<li><a class="dropdown-item" href="#">ダウンロード回数少ない順</a></li>
-						</ul>
+						<select id="sortDropDown" class="form-control">
+							<option value="0">表示順　▼</option>
+							<option value="1">安い順　▼</option>
+							<option value="2">高い順　▼</option>
+						</select>
 					</div>
 				  </div>
 				  <!-- END ORDER RESULT -->
@@ -129,8 +138,8 @@
 				<!-- BEGIN TABLE RESULT -->
 				<div class="table-responsive">
 				  <table class="table table-hover">
-                                    <% unless @records.nil? then  @records.each do |result| %>
-                                      <tbody> 
+                                    <tbody> 
+                                      <% unless @records.nil? then  @records.each do |result| %>
                                         <td class="image">
                                           <a href="<%= result["url"] %>">
                                             <img src="<%= result["image"] %>" alt="">
@@ -147,9 +156,9 @@
                                         </td>
                                         <td class="price text-right"> <%= result["price"] %> </td>
                                         <span> </span>
-                                      </tbody>
-                                     <% end %>
-                                     <% end %>
+                                      <% end %>
+                                      <% end %>
+                                    </tbody>
                                 </div>
                                 <!-- END TABLE RESULT -->
 
