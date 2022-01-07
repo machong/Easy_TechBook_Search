@@ -129,8 +129,8 @@
 				<!-- BEGIN TABLE RESULT -->
 				<div class="table-responsive">
 				  <table class="table table-hover">
-                                    <tbody> 
-                                      <% unless @records.nil? then  @records.each do |result| %>
+                                    <% unless @records.nil? then  @records.each do |result| %>
+                                      <tbody> 
                                         <td class="image">
                                           <a href="<%= result["url"] %>">
                                             <img src="<%= result["image"] %>" alt="">
@@ -147,9 +147,9 @@
                                         </td>
                                         <td class="price text-right"> <%= result["price"] %> </td>
                                         <span> </span>
-                                      <% end %>
-                                      <% end %>
-                                    </tbody>
+                                      </tbody>
+                                     <% end %>
+                                     <% end %>
                                 </div>
                                 <!-- END TABLE RESULT -->
 

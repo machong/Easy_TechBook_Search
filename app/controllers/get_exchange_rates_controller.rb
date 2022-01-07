@@ -1,6 +1,7 @@
 class GetExchangeRatesController < ApplicationController
   require 'open-uri'
   require 'json'
+# rubocop:disable all
   def getRate
     html = open('http://www.gaitameonline.com/rateaj/getrate').read
     json = JSON.parse(html)['quotes']
@@ -8,5 +9,6 @@ class GetExchangeRatesController < ApplicationController
     puts "USDJPY:#{usdjpy}"
     usdjpy
   end
+# rubocop:enable all
 end
 
