@@ -1,14 +1,20 @@
 require_relative '../forms/search_books_form'
+require 'net/http'
+require 'uri'
+require 'json'
 
 class BooksController < ApplicationController
   def search
     @search_form = SearchBooksForm.new(search_books_params)
 
     # IT BookstoreからのJSON戻り値を@recordsに格納する
-    @records = @search_form.query['books']
+    unless params[:sort_by].nil? then
+      @records = @search_form.query().sort(sort_by: params[:sort_by], ascending: params[:ascending])["books"]
+    else      
+      @records = @search_form.query().sort()["books"]
+    end
 
     # IT Bookstoreのサーバが落ちている時は↑の@records行をコメントアウトして↓のダミーデータを使う
-
     #
     #     @records = [
     #       {
@@ -28,7 +34,21 @@ class BooksController < ApplicationController
     #         "url"      => "https://itbook.store/books/9781484211830"
     #       }
     #     ]
+
+    # IT BookstoreからのJSON戻り値(詳細版)を@detailed_recordsに格納する
+    @detailed_records = []
+    @records.each do |book|
+      uri = URI.parse('https://api.itbook.store/1.0/books/' + book["isbn13"])
+      https = Net::HTTP.new(uri.host, uri.port)
+      https.use_ssl = true
+      req = Net::HTTP::Get.new(uri.path)
+      res = https.request(req)
+      @detailed_records.push(JSON.parse(res.body))
+    end
+
   end
+
+
 
   private
 
