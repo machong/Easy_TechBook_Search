@@ -39,5 +39,4 @@ jobs:
 
       - name: verify
         run: |
-          bundle exec rubocop
           bundle exec rspec
