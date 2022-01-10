@@ -21,7 +21,7 @@ jobs:
     container:
       image: ruby:3.0.0
       env:
-        RAILS_ENV: test
+        RAILS_ENV: default
         POSTGRES_HOST: postgres
         RAILS_DATABASE_USER: postgres
         RAILS_DATABASE_PASSWORD: postgres
