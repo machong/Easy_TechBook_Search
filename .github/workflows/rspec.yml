@@ -21,7 +21,7 @@ jobs:
       image: ruby:3.0.0
       env:
         RAILS_ENV: test
-        POSTGRES_HOST: 127.0.0.1
+        POSTGRES_HOST: pgsql
         RAILS_DATABASE_USER: postgres
         RAILS_DATABASE_PASSWORD: postgres
 
@@ -39,4 +39,5 @@ jobs:
 
       - name: verify
         run: |
+          bundle exec rake db:migrate
           bundle exec rspec
