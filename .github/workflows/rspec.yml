@@ -1,7 +1,12 @@
-name: rspec CI
+name: Verify
+# This workflow is triggered on pushes to the repository.
 on: [push]
+
 jobs:
   build:
+    # Job name is Greeting
+    name: verify
+    # This job runs on Linux
     runs-on: ubuntu-latest
     services:
       postgres:
@@ -10,23 +15,34 @@ jobs:
           - 5432:5432
         env:
           POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
+          POSTGRES_PASSWORD: password
           POSTGRES_DB: Easy_TechBook_Search_production
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
     container:
       image: ruby:3.0.0
       env:
         RAILS_ENV: test
-        RAILS_DATABASE_HOST: postgres # this is needed
+        POSTGRES_HOST: postgres
         RAILS_DATABASE_USER: postgres
         RAILS_DATABASE_PASSWORD: postgres
+
     steps:
-      - uses: actions/checkout@v1
-      - name: Prepare bundler
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: bundler set up
         run: |
           gem install bundler
-          bundle install --jobs 4 --retry 3
-      - name: Prepare database
-        run: bundle exec rails db:setup
-      - name: Run test
-        run: bundle exec rspec
+          bundle install
+      - name: install node
+        uses: actions/setup-node@v1
+        with:
+          node-version: '12'
+
+      - name: db migrate
+        run: |
+          bundle exec rails db:migrate
+
+      - name: verify
+        run: |
+          bundle exec rubocop
+          bundle exec rspec
