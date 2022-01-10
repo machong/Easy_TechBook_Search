@@ -39,8 +39,7 @@ jobs:
           node-version: '12'
 
       - name: db setup
-        run: |
-          run: bundle exec rails db:setup
+        run: bundle exec rails db:setup
 
       - name: verify
         run: |
