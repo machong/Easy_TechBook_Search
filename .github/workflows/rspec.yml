@@ -38,9 +38,9 @@ jobs:
         with:
           node-version: '12'
 
-      - name: db migrate
+      - name: db setup
         run: |
-          bundle exec rails db:migrate
+          run: bundle exec rails db:setup
 
       - name: verify
         run: |
