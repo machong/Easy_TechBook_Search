@@ -39,6 +39,5 @@ jobs:
 
       - name: verify
         run: |
-          bundle exec rake db:migrate
           bundle exec rubocop
           bundle exec rspec
