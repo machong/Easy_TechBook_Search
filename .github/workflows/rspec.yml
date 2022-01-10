@@ -1,0 +1,29 @@
+name: rspec CI
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:12
+        ports:
+          - 5432:5432
+        env:
+          POSTGRES_USER: pguser
+          POSTGRES_PASSWORD: password
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+    container:
+      image: ruby:3.0.0
+      env:
+        RAILS_ENV: test
+        RAILS_DATABASE_HOST: postgres # this is needed
+        RAILS_DATABASE_USER: postgres
+        RAILS_DATABASE_PASSWORD: postgres
+    steps:
+      - uses: actions/checkout@v1
+      - name: Prepare bundler
+        run: |
+          gem install bundler
+          bundle install --jobs 4 --retry 3
+      - name: Run test
+        run: bundle exec rspec
