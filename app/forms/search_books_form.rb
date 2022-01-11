@@ -8,7 +8,8 @@ class SearchBooksForm
 
   attribute :keyword, :string
 
-  def query()
+  def query(sorting = 'false')
+    debugger
     if !self.keyword.empty? then
       keyword_mod = self.keyword.gsub(' ', '+')
       uri = URI.parse(format('https://api.itbook.store/1.0/search/%<x>s', x: keyword_mod))
@@ -17,7 +18,9 @@ class SearchBooksForm
       req = Net::HTTP::Get.new(uri.path)
       res = https.request(req)
       @hash = JSON.parse(res.body)
-    elsif
+    elsif sorting[:sorting]=="true" then
+      @hash = @hash
+    else
       @hash = {books:[]}
     end
     return self
