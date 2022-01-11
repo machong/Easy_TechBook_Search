@@ -6,15 +6,15 @@ require 'json'
 
 class BooksController < ApplicationController
   def search
-    debugger
     if params[:sorting].nil? then
       @search_form = SearchBooksForm.new(search_books_params)
+      session[:search_params] = search_books_params
     else
-      @search_form = params[:search_results]
+      @search_form = SearchBooksForm.new(session[:search_params])
     end
     # IT BookstoreからのJSON戻り値を@recordsに格納する
     @records = if params[:sort_by].nil?
-                 @search_form.query(sorting: 'false').sort['books']
+                 @search_form.query(sorting: 'false').sort(sort_by: "price", ascending: "true")['books']
                else
                  @search_form.query(sorting: params[:sorting]).sort(sort_by: params[:sort_by], ascending: params[:ascending])['books']
                end

@@ -31,3 +31,4 @@
 /config/master.key
 
 /vendor/bundle/ruby/2.7.0/*
+/vendor/bundle/ruby/3.0.0/*
