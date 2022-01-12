@@ -37,9 +37,9 @@
         //Getting Value
         var selValue = $("#sortDropDown").val();
     
-    // ここにソートの機能を呼び出してください！
-    // alert('ソート順変わった('+selValue+')');
-    });
+  // ここにソートの機能を呼び出してください！
+  // alert('ソート順変わった('+selValue+')');
+  });
   // ソート順クリックイベント end
 
 </script>
@@ -126,11 +126,14 @@
 				  <!-- BEGIN ORDER RESULT -->
 				  <div class="col-sm-12">
 					<div class="btn-group pull-right">
+                      <!--
 						<select id="sortDropDown" class="form-control">
 							<option value="0">表示順　▼</option>
 							<option value="1">安い順　▼</option>
 							<option value="2">高い順　▼</option>
 						</select>
+                        -->
+                        <%= select_tag(:sortDropDown, options_for_select([["安い順",true], ["高い順",false]]), {:onchange => "$.ajax({url: 'search', type: 'GET', data: {sort_by:'price', ascending: value, sorting: true}})"}) %>
 					</div>
 				  </div>
 				  <!-- END ORDER RESULT -->
