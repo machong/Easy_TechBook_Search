@@ -11,4 +11,3 @@ class GetExchangeRatesController < ApplicationController
   end
 # rubocop:enable all
 end
-
