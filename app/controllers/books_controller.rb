@@ -1,12 +1,12 @@
-# coding: utf-8
 require_relative '../forms/search_books_form'
+require_relative './get_exchange_rates_controller'
 require 'net/http'
 require 'uri'
 require 'json'
 
 class BooksController < ApplicationController
   def search
-    if params[:sorting].nil? then
+    if params[:sorting].nil?
       @search_form = SearchBooksForm.new(search_books_params)
       session[:search_params] = search_books_params
     else
@@ -14,9 +14,10 @@ class BooksController < ApplicationController
     end
     # IT BookstoreからのJSON戻り値を@recordsに格納する
     @records = if params[:sort_by].nil?
-                 @search_form.query(sorting: 'false').sort(sort_by: "price", ascending: "true")['books']
+                 @search_form.query(sorting: 'false').sort(sort_by: 'price', ascending: 'true')['books']
                else
-                 @search_form.query(sorting: params[:sorting]).sort(sort_by: params[:sort_by], ascending: params[:ascending])['books']
+                 @search_form.query(sorting: params[:sorting]).sort(sort_by: params[:sort_by],
+                                                                    ascending: params[:ascending])['books']
                end
 
     # IT Bookstoreのサーバが落ちている時は↑の@records行をコメントアウトして↓のダミーデータを使う
@@ -50,6 +51,21 @@ class BooksController < ApplicationController
       res = https.request(req)
       @detailed_records.push(JSON.parse(res.body))
     end
+
+    # 現時点でのドル円レートを取得
+    # rate = GetExchangeRatesController.new
+    # yen_rate = rate.getRate
+
+    # @detailed_recordsのpriceの値を文字列から数字にした上で円換算
+    @detailed_records&.each do |detailed_book|
+      detailed_book['price'] = detailed_book['price'][1..].to_f
+      # detailed_book["price"] *= yen_rate
+      detailed_book['price'] *= 114 # 今はダミーでドル円レートを114にしている
+      detailed_book['price'] = detailed_book['price'].ceil
+    end
+
+    # @detailed_recordsを安い順にソート
+    @detailed_records.sort_by! { |a| a['price'] }
   end
 
   private

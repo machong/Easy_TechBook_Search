@@ -15,11 +15,14 @@ Documentation:
 
 MethodLength:
   CountComments: false  # count full line comments?
-  Max: 15
+  Max: 30 
 
 Metrics/AbcSize:
   # The ABC size is a calculated magnitude, so this number can be a Fixnum or a Float.
-  Max: 40
+  Max: 80
+
+Metrics/PerceivedComplexity:
+  Max: 10
 
 AllCops:
   RubyInterpreters:
