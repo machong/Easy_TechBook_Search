@@ -25,7 +25,7 @@ class SearchBooksForm
     self
   end
 
-  def sort(sort_by = 'price', _ascending: true)
+  def sort(sort_by = 'price', _ascending = true)
     if !@hash['books'].nil? && (sort_by[:sort_by] == 'price')
       if sort_by[:ascending] == 'true'
         @hash['books'].sort_by! { |v| -v['price'] }

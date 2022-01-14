@@ -13,6 +13,9 @@ ClassAndModuleChildren:
 Documentation:
   Enabled: false
 
+Style/OptionalBooleanParameter:
+  Enabled: false
+
 MethodLength:
   CountComments: false  # count full line comments?
   Max: 30 
