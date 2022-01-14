@@ -1,3 +1,4 @@
+# coding: utf-8
 require_relative '../forms/search_books_form'
 require 'net/http'
 require 'uri'
@@ -6,7 +7,6 @@ require 'json'
 class BooksController < ApplicationController
   def search
     @search_form = SearchBooksForm.new(search_books_params)
-
     # IT BookstoreからのJSON戻り値を@recordsに格納する
     @records = if params[:sort_by].nil?
                  @search_form.query.sort['books']
