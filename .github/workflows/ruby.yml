@@ -49,6 +49,7 @@ jobs:
         echo "database_url=postgres://postgres:postgres@localhost:5432/Easy_TechBook_Search_test" >> $GITHUB_ENV
     - name: setup DB
       run: |
+        bundle exec rails db:create
         bundle exec rails db:schema:load
     - name: Run tests
       run: bundle exec rspec
