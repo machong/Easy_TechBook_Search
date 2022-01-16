@@ -46,7 +46,7 @@ jobs:
     - name: Set env
       run: |
         echo "rails_env=test" >> $GITHUB_ENV
-        echo "database_url=postgres://postgres:postgres@localhost:5432/my_database" >> $GITHUB_ENV
+        echo "database_url=postgres://postgres:postgres@localhost:5432/Easy_TechBook_Search_development" >> $GITHUB_ENV
     - name: setup DB
       run: |
         bundle exec rails db:schema:load
