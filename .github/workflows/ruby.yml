@@ -10,7 +10,7 @@ jobs:
         env:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
-          POSTGRES_DB: my_database
+          POSTGRES_DB: Easy_TechBook_Search_test
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
@@ -46,7 +46,7 @@ jobs:
     - name: Set env
       run: |
         echo "rails_env=test" >> $GITHUB_ENV
-        echo "database_url=postgres://postgres:postgres@localhost:5432/Easy_TechBook_Search_development" >> $GITHUB_ENV
+        echo "database_url=postgres://postgres:postgres@localhost:5432/Easy_TechBook_Search_test" >> $GITHUB_ENV
     - name: setup DB
       run: |
         bundle exec rails db:schema:load
