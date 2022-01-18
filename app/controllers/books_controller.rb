@@ -53,14 +53,13 @@ class BooksController < ApplicationController
     end
 
     # 現時点でのドル円レートを取得
-    # rate = GetExchangeRatesController.new
-    # yen_rate = rate.getRate
+    rate = GetExchangeRatesController.new
+    yen_rate = rate.getRate.to_f
 
-    # @detailed_recordsのpriceの値を文字列から数字にした上で円換算
+    # @detailed_recordsのpriceの値を文字列から数字にした上で円換算(小数点以下切り上げ)
     @detailed_records&.each do |detailed_book|
       detailed_book['price'] = detailed_book['price'][1..].to_f
-      # detailed_book["price"] *= yen_rate
-      detailed_book['price'] *= 114 # 今はダミーでドル円レートを114にしている
+      detailed_book["price"] *= yen_rate
       detailed_book['price'] = detailed_book['price'].ceil
     end
 
