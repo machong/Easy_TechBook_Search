@@ -1,0 +1,221 @@
+{
+  "RSpec": {
+    "coverage": {
+      "/home/user/Easy_TechBook_Search/app/helpers/application_helper.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
+      "/home/user/Easy_TechBook_Search/app/helpers/books_helper.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
+      "/home/user/Easy_TechBook_Search/app/helpers/get_exchange_rates_helper.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
+      "/home/user/Easy_TechBook_Search/app/controllers/get_exchange_rates_controller.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          null,
+          1,
+          2,
+          2,
+          2,
+          2,
+          2,
+          null,
+          null,
+          null
+        ]
+      },
+      "/home/user/Easy_TechBook_Search/app/controllers/application_controller.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
+      "/home/user/Easy_TechBook_Search/app/controllers/books_controller.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          0,
+          null,
+          null,
+          1,
+          1,
+          null,
+          0,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          1,
+          10,
+          10,
+          10,
+          10,
+          10,
+          10,
+          null,
+          null,
+          null,
+          1,
+          1,
+          null,
+          null,
+          1,
+          10,
+          10,
+          10,
+          null,
+          null,
+          null,
+          11,
+          null,
+          null,
+          1,
+          null,
+          1,
+          2,
+          null,
+          null
+        ]
+      },
+      "/home/user/Easy_TechBook_Search/app/forms/search_books_form.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          1,
+          null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          0,
+          null,
+          null,
+          0,
+          null,
+          1,
+          null,
+          null,
+          1,
+          1,
+          1,
+          11,
+          null,
+          0,
+          null,
+          null,
+          1,
+          null,
+          null
+        ]
+      },
+      "/home/user/Easy_TechBook_Search/app/jobs/application_job.rb": {
+        "lines": [
+          0,
+          null,
+          null,
+          null,
+          null,
+          null,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/home/user/Easy_TechBook_Search/app/channels/application_cable/connection.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/home/user/Easy_TechBook_Search/app/channels/application_cable/channel.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/home/user/Easy_TechBook_Search/app/mailers/application_mailer.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/home/user/Easy_TechBook_Search/app/models/application_record.rb": {
+        "lines": [
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      }
+    },
+    "timestamp": 1642764875
+  }
+}
