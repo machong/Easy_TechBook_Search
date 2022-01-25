@@ -42,14 +42,21 @@ class BooksController < ApplicationController
     #     ]
 
     # IT BookstoreからのJSON戻り値(詳細版)を@detailed_recordsに格納する
+    hydra = Typhoeus::Hydra.hydra
+    requests = []
     @detailed_records = []
     @records&.each do |book|
       uri = URI.parse("https://api.itbook.store/1.0/books/#{book['isbn13']}")
-      https = Net::HTTP.new(uri.host, uri.port)
-      https.use_ssl = true
-      req = Net::HTTP::Get.new(uri.path)
-      res = https.request(req)
-      @detailed_records.push(JSON.parse(res.body))
+      request = Typhoeus::Request.new(uri)
+      hydra.queue(request)
+      requests.push(request)
+    end
+    hydra.run
+    responses = requests.map do |request|
+      request.response.body
+    end
+    responses.each do |api_res|
+      @detailed_records.push(JSON.parse(api_res))
     end
 
     # 現時点でのドル円レートを取得
@@ -59,7 +66,7 @@ class BooksController < ApplicationController
     # @detailed_recordsのpriceの値を文字列から数字にした上で円換算(小数点以下切り上げ)
     @detailed_records&.each do |detailed_book|
       detailed_book['price'] = detailed_book['price'][1..].to_f
-      detailed_book["price"] *= yen_rate
+      detailed_book['price'] *= yen_rate
       detailed_book['price'] = detailed_book['price'].ceil
     end
 
