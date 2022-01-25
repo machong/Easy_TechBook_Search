@@ -34,11 +34,30 @@
 
   // ソート順クリックイベント start
   $(document).on('change','#sortDropDown',function(){
-        //Getting Value
-        var selValue = $("#sortDropDown").val();
-    
-  // ここにソートの機能を呼び出してください！
-  // alert('ソート順変わった('+selValue+')');
+	//Getting Value
+	var selValue = $("#sortDropDown").val();
+
+	// ここにソートの機能を呼び出してください！
+	// alert('ソート順変わった('+selValue+')');
+	
+	$.ajax({
+			url : "search",
+			type: "GET",
+			data:{
+				sort_by:'price', 
+				ascending: selValue, 
+				sorting: true},
+			success: function(res) {
+				// alert(res);
+				$('#tb_result').empty();
+				// alert('clear html');
+				// @detailed_recordsの順番は正しいけど、jsで元の順番のままですが、原因はまだ不明
+				$('#tb_result').append('<% unless @detailed_records.nil? then @detailed_records.each do |result| %>');
+				$('#tb_result').append('<tbody><td class="image"><a href="<%= result["url"] %>"><img src="<%= result["image"] %>" alt=""></a></td><td class="Book col-sm-5"><div class="search-result-item col-sm-12"><h4 class="serach-result-itemheading"><a href="<%= result["url"]%>" ><%= result["title"] %></a></h4><p class="serach-result-itemheading"><%= result["desc"] %></p></div></td><td class="price text-right"> <%= result["price"] %> </td><span>/span></tbody>');
+				$('#tb_result').append('<% end %>');
+				$('#tb_result').append('<% end %>');
+			}
+		});
   });
   // ソート順クリックイベント end
 
@@ -133,7 +152,7 @@
 							<option value="2">高い順　▼</option>
 						</select>
                         -->
-                        <%= select_tag(:sortDropDown, options_for_select([["安い順",true], ["高い順",false]]), {:onchange => "$.ajax({url: 'search', type: 'GET', data: {sort_by:'price', ascending: value, sorting: true}})"}) %>
+                       <%= select_tag(:sortDropDown, options_for_select([["安い順",true], ["高い順",false]])) %>
 					</div>
 				  </div>
 				  <!-- END ORDER RESULT -->

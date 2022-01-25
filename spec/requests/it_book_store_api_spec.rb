@@ -11,11 +11,17 @@ describe 'IT Book Store API', type: :request do
       headers: { 'Content-Type' => 'application/json' }
     )
 
-    stub_request(:get, 'https://api.itbook.store/1.0/books/9780321604811').to_return(
-      body: File.read('spec/fixtures/contents.json'),
-      status: 200,
-      headers: { 'Content-Type' => 'application/json' }
+    stub_request(:get, "https://api.itbook.store/1.0/books/9780321604811").to_return(
+        body: File.read("spec/fixtures/contents.json"),
+        status: 200,
+        headers: { 'Content-Type' => 'application/json' }
     )
+
+    stub_request(:get, 'http://www.gaitameonline.com/rateaj/getrate').to_return(
+        body: File.read("spec/fixtures/getrate.json"),
+        status: 200,
+        headers: { 'Content-Type' => 'application/json' }
+      )
   end
 
   describe 'GET /books/search' do
